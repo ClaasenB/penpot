@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OpenProps Component Library</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, sans-serif;
+    background: #1e2124;
+    color: #e0e0e0;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  h1 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h1 span { font-size: 16px; }
+  .subtitle { font-size: 11px; color: #868e96; margin-bottom: 16px; }
+  .section {
+    margin-bottom: 12px;
+    border: 1px solid #2c2f33;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: #2c2f33;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #adb5bd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-header .count {
+    background: #3a3d42;
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 10px;
+    color: #868e96;
+  }
+  .section-body { padding: 10px 12px; }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .tag {
+    background: #2c2f33;
+    border: 1px solid #3a3d42;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    color: #adb5bd;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background: #339af0;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: #228be6; }
+  .btn:disabled { background: #3a3d42; color: #868e96; cursor: not-allowed; }
+  .progress {
+    display: none;
+    margin-top: 12px;
+  }
+  .progress.visible { display: block; }
+  .progress-bar-track {
+    background: #2c2f33;
+    border-radius: 4px;
+    height: 4px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: #339af0;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+  .progress-label {
+    font-size: 10px;
+    color: #868e96;
+    margin-top: 6px;
+    text-align: center;
+  }
+  .log {
+    margin-top: 12px;
+    background: #161719;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 10px;
+    font-family: monospace;
+    color: #51cf66;
+    max-height: 120px;
+    overflow-y: auto;
+    display: none;
+  }
+  .log.visible { display: block; }
+  .log-line { margin-bottom: 2px; }
+  .log-line.err { color: #ff6b6b; }
+</style>
+</head>
+<body>
+
+<h1><span>🎨</span> OpenProps Library</h1>
+<p class="subtitle">Erstellt alle Standard-Komponenten in deiner Penpot-Datei</p>
+
+<div class="section">
+  <div class="section-header">Typography <span class="count">10</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Display</span><span class="tag">Heading/1–4</span>
+      <span class="tag">Body/Large</span><span class="tag">Body/Default</span>
+      <span class="tag">Body/Small</span><span class="tag">Label</span>
+      <span class="tag">Caption</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Buttons <span class="count">8</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Primary</span><span class="tag">Secondary</span>
+      <span class="tag">Danger</span><span class="tag">Success</span>
+      <span class="tag">Ghost</span><span class="tag">Small</span>
+      <span class="tag">Large</span><span class="tag">Disabled</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Form Inputs <span class="count">9</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Default</span><span class="tag">Focus</span>
+      <span class="tag">Error</span><span class="tag">Success</span>
+      <span class="tag">Disabled</span><span class="tag">Textarea</span>
+      <span class="tag">Select</span><span class="tag">Checkbox ×2</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Cards <span class="count">2</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Basic</span><span class="tag">Stats</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Badges <span class="count">6</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Default</span><span class="tag">Primary</span>
+      <span class="tag">Success</span><span class="tag">Warning</span>
+      <span class="tag">Danger</span><span class="tag">New</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Alerts <span class="count">4</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Info</span><span class="tag">Success</span>
+      <span class="tag">Warning</span><span class="tag">Error</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Navigation <span class="count">3</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Topbar</span><span class="tag">Tabs</span>
+      <span class="tag">Breadcrumb</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Layout <span class="count">3</span></div>
+  <div class="section-body">
+    <div class="tag-list">
+      <span class="tag">Container</span><span class="tag">HStack</span>
+      <span class="tag">VStack</span>
+    </div>
+  </div>
+</div>
+
+<button class="btn" id="buildBtn" onclick="startBuild()">
+  ▶ Alle Komponenten erstellen
+</button>
+
+<div class="progress" id="progress">
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+  </div>
+  <div class="progress-label" id="progressLabel">Wird vorbereitet…</div>
+</div>
+
+<div class="log" id="log"></div>
+
+<script>
+// ── Token-Werte ────────────────────────────────────────────────────────────
+const t = {
+  sp1:4, sp2:8, sp3:12, sp4:16, sp5:20, sp6:24, sp8:32,
+  r1:2, r2:5, r3:16,
+  fs1:12, fs2:14, fs3:16, fs4:18, fs5:20, fs6:24, fs7:28, fs8:32,
+  gray0:'#f8f9fa', gray1:'#f1f3f5', gray2:'#e9ecef', gray3:'#dee2e6',
+  gray4:'#ced4da', gray5:'#adb5bd', gray6:'#868e96', gray7:'#495057',
+  gray8:'#343a40', gray9:'#212529',
+  blue0:'#e7f5ff', blue1:'#d0ebff', blue5:'#339af0', blue6:'#228be6', blue7:'#1c7ed6',
+  red5:'#ff6b6b', red6:'#fa5252',
+  green5:'#51cf66', green6:'#40c057',
+  white:'#ffffff', black:'#000000',
+};
+
+let logEl, progressFill, progressLabel, buildBtn;
+let done = 0, total = 45;
+
+function log(msg, isErr = false) {
+  const line = document.createElement('div');
+  line.className = 'log-line' + (isErr ? ' err' : '');
+  line.textContent = msg;
+  logEl.appendChild(line);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function setProgress(pct, label) {
+  progressFill.style.width = pct + '%';
+  progressLabel.textContent = label;
+}
+
+function step(label) {
+  done++;
+  setProgress(Math.round(done / total * 100), label);
+  log('✓ ' + label);
+}
+
+// ── Hilfsfunktionen ────────────────────────────────────────────────────────
+function makeRect(name, x, y, w, h, fill, radius, stroke) {
+  const r = penpot.createRectangle();
+  r.name = name; r.x = x; r.y = y; r.width = w; r.height = h;
+  r.fills = [{ fillType: 'solid', fillColor: fill, fillOpacity: 1 }];
+  if (radius) r.borderRadius = radius;
+  if (stroke) r.strokes = [{ strokeType:'center', strokeColor: stroke.color,
+    strokeOpacity:1, strokeWidth: stroke.width || 1 }];
+  return r;
+}
+
+function makeText(name, x, y, content, opts = {}) {
+  const tx = penpot.createText(content);
+  tx.name = name; tx.x = x; tx.y = y;
+  tx.growType = 'auto-width';
+  if (opts.size)   tx.fontSize   = String(opts.size);
+  if (opts.weight) tx.fontWeight = String(opts.weight);
+  if (opts.color)  tx.fills = [{ fillType:'solid', fillColor: opts.color, fillOpacity:1 }];
+  return tx;
+}
+
+function makeComp(shapes) {
+  penpot.library.local.createComponent(shapes);
+}
+
+async function startBuild() {
+  buildBtn.disabled = true;
+  document.getElementById('progress').classList.add('visible');
+  document.getElementById('log').classList.add('visible');
+  logEl = document.getElementById('log');
+  progressFill = document.getElementById('progressFill');
+  progressLabel = document.getElementById('progressLabel');
+
+  try {
+    await buildAll();
+  } catch(e) {
+    log('❌ Fehler: ' + e.message, true);
+    buildBtn.disabled = false;
+  }
+}
+
+async function buildAll() {
+  let Y = 60;
+  const MX = 60, GAP = 24;
+
+  // ── TYPOGRAPHY ────────────────────────────────────────────────────────────
+  makeRect('_sec_typography', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_typography_lbl', MX+16, Y+8, 'TYPOGRAPHY', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const typeSpecs = [
+    ['Typography/Display',      t.fs8, '700'],
+    ['Typography/Heading/1',    32,    '700'],
+    ['Typography/Heading/2',    t.fs6, '600'],
+    ['Typography/Heading/3',    t.fs5, '600'],
+    ['Typography/Heading/4',    t.fs4, '500'],
+    ['Typography/Body/Large',   t.fs3, '400'],
+    ['Typography/Body/Default', t.fs2, '400'],
+    ['Typography/Body/Small',   t.fs1, '400'],
+    ['Typography/Label',        t.fs1, '600'],
+    ['Typography/Caption',      11,    '400'],
+  ];
+  for (const [name, size, weight] of typeSpecs) {
+    const tx = makeText(name, MX, Y, `${name.split('/').pop()} — The quick brown fox jumps`, { size, weight, color: t.gray9 });
+    makeComp([tx]);
+    step(name);
+    Y += size + 16;
+    await tick();
+  }
+  Y += 24;
+
+  // ── BUTTONS ───────────────────────────────────────────────────────────────
+  makeRect('_sec_buttons', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_buttons_lbl', MX+16, Y+8, 'BUTTONS', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const buttons = [
+    ['Button/Primary',   t.blue6,  t.white, null,     14, 12, 8],
+    ['Button/Secondary', t.white,  t.gray9, t.gray3,  14, 12, 8],
+    ['Button/Danger',    t.red6,   t.white, null,     14, 12, 8],
+    ['Button/Success',   t.green6, t.white, null,     14, 12, 8],
+    ['Button/Ghost',     t.white,  t.blue6, t.blue5,  14, 12, 8],
+    ['Button/Small',     t.blue6,  t.white, null,     12,  8, 5],
+    ['Button/Large',     t.blue6,  t.white, null,     16, 20,12],
+    ['Button/Disabled',  t.gray2,  t.gray5, null,     14, 12, 8],
+  ];
+  let bx = MX;
+  for (const [name, bg, fg, border, fs, pH, pV] of buttons) {
+    const label = name.split('/').pop();
+    const bw = label.length * fs * 0.65 + pH * 2;
+    const bh = fs + pV * 2;
+    if (bx + bw + GAP > 1140) { bx = MX; Y += bh + GAP; }
+    const stroke = border ? { color: border, width: 1 } : null;
+    const bg2 = makeRect(`${name}_bg`, bx, Y, bw, bh, bg, t.r2, stroke);
+    const tx2 = makeText(`${name}_tx`, bx + pH, Y + pV, label, { size:fs, weight:'500', color:fg });
+    makeComp([bg2, tx2]);
+    step(name);
+    bx += bw + GAP;
+    await tick();
+  }
+  Y += 40 + 48;
+
+  // ── INPUTS ────────────────────────────────────────────────────────────────
+  makeRect('_sec_inputs', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_inputs_lbl', MX+16, Y+8, 'FORM INPUTS', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const inputs = [
+    ['Input/Default',  t.white,   t.gray3,  t.gray5, 'Enter text…'],
+    ['Input/Focus',    t.white,   t.blue5,  t.gray9, 'Focused'],
+    ['Input/Error',    '#fff5f5', t.red5,   t.gray9, 'Invalid value'],
+    ['Input/Success',  '#ebfbee', t.green5, t.gray9, 'Valid input'],
+    ['Input/Disabled', t.gray1,   t.gray3,  t.gray5, 'Disabled'],
+  ];
+  let ix = MX;
+  const IW = 220, IH = 40;
+  for (const [name, bg, border, tc, ph] of inputs) {
+    if (ix + IW + GAP > 1140) { ix = MX; Y += IH + GAP + 24; }
+    const lbl = makeText(`${name}_lbl`, ix, Y-16, name.split('/').pop(), { size:11, weight:'500', color:t.gray7 });
+    const bg2 = makeRect(`${name}_bg`, ix, Y, IW, IH, bg, t.r2, { color:border, width:1.5 });
+    const pht = makeText(`${name}_ph`, ix+t.sp3, Y+t.sp3, ph, { size:t.fs2, color:tc });
+    makeComp([lbl, bg2, pht]);
+    step(name);
+    ix += IW + GAP;
+    await tick();
+  }
+  Y += IH + 64;
+
+  // Textarea
+  const ta_l = makeText('Input/Textarea_lbl', MX, Y-16, 'Textarea', { size:11, weight:'500', color:t.gray7 });
+  const ta_b = makeRect('Input/Textarea_bg', MX, Y, 460, 96, t.white, t.r2, { color:t.gray3, width:1.5 });
+  const ta_p = makeText('Input/Textarea_ph', MX+t.sp3, Y+t.sp4, 'Enter longer text…', { size:t.fs2, color:t.gray5 });
+  makeComp([ta_l, ta_b, ta_p]);
+  step('Input/Textarea');
+
+  // Select
+  const sel_b = makeRect('Input/Select_bg', MX+480, Y, 220, IH, t.white, t.r2, { color:t.gray3, width:1.5 });
+  const sel_t = makeText('Input/Select_tx', MX+480+t.sp3, Y+t.sp3, 'Choose option…', { size:t.fs2, color:t.gray6 });
+  const sel_a = makeText('Input/Select_arrow', MX+480+196, Y+t.sp3, '▾', { size:12, color:t.gray5 });
+  makeComp([sel_b, sel_t, sel_a]);
+  step('Input/Select');
+  Y += 120;
+
+  // Checkboxes
+  for (const [checked, ox] of [[true, 0],[false, 140]]) {
+    const name = checked ? 'Input/Checkbox/Checked' : 'Input/Checkbox/Unchecked';
+    const cb = makeRect(`${name}_box`, MX+ox, Y, 18, 18,
+      checked ? t.blue6 : t.white, 3,
+      checked ? null : { color:t.gray3, width:1.5 });
+    const cl = makeText(`${name}_lbl`, MX+ox+26, Y+3,
+      checked ? 'Checked' : 'Unchecked', { size:13, color:t.gray8 });
+    makeComp([cb, cl]);
+    step(name);
+  }
+  Y += 48;
+  await tick();
+
+  // ── CARDS ─────────────────────────────────────────────────────────────────
+  makeRect('_sec_cards', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_cards_lbl', MX+16, Y+8, 'CARDS', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const c_bg  = makeRect('Card/Basic_bg', MX, Y, 320, 180, t.white, 8, { color:t.gray2, width:1 });
+  const c_ttl = makeText('Card/Basic_title', MX+16, Y+20, 'Card Title', { size:15, weight:'600', color:t.gray9 });
+  const c_sub = makeText('Card/Basic_sub', MX+16, Y+44, 'Subtitle text', { size:13, color:t.gray5 });
+  const c_bdy = makeText('Card/Basic_body', MX+16, Y+68, 'Card body text goes here.', { size:13, color:t.gray7 });
+  const c_btn = makeRect('Card/Basic_btn', MX+16, Y+136, 80, 30, t.blue6, t.r2);
+  const c_btx = makeText('Card/Basic_btx', MX+24, Y+144, 'Action', { size:13, weight:'500', color:t.white });
+  makeComp([c_bg, c_ttl, c_sub, c_bdy, c_btn, c_btx]);
+  step('Card/Basic');
+
+  const s_bg  = makeRect('Card/Stats_bg', MX+344, Y, 220, 120, t.white, 8, { color:t.gray2, width:1 });
+  const s_lbl = makeText('Card/Stats_label', MX+360, Y+24, 'METRIC LABEL', { size:11, weight:'500', color:t.gray5 });
+  const s_num = makeText('Card/Stats_value', MX+360, Y+56, '2,847', { size:32, weight:'700', color:t.gray9 });
+  const s_chg = makeText('Card/Stats_change', MX+360, Y+92, '↑ +12.4%', { size:12, color:t.green5 });
+  makeComp([s_bg, s_lbl, s_num, s_chg]);
+  step('Card/Stats');
+  Y += 200;
+  await tick();
+
+  // ── BADGES ────────────────────────────────────────────────────────────────
+  makeRect('_sec_badges', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_badges_lbl', MX+16, Y+8, 'BADGES', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const badges = [
+    ['Badge/Default', t.gray2,   t.gray7],
+    ['Badge/Primary', t.blue1,   t.blue7],
+    ['Badge/Success', '#d3f9d8', '#2b8a3e'],
+    ['Badge/Warning', '#fff3bf', '#e67700'],
+    ['Badge/Danger',  '#ffe3e3', '#c92a2a'],
+    ['Badge/New',     t.blue6,   t.white],
+  ];
+  let badX = MX;
+  for (const [name, bg, fg] of badges) {
+    const lbl = name.split('/').pop();
+    const bw = lbl.length * 7.5 + 20;
+    const bb = makeRect(`${name}_bg`, badX, Y, bw, 22, bg, 11);
+    const bt = makeText(`${name}_tx`, badX+10, Y+5, lbl, { size:11, weight:'500', color:fg });
+    makeComp([bb, bt]);
+    step(name);
+    badX += bw + 12;
+    await tick();
+  }
+  Y += 48;
+
+  // ── ALERTS ────────────────────────────────────────────────────────────────
+  makeRect('_sec_alerts', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_alerts_lbl', MX+16, Y+8, 'ALERTS', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const alerts = [
+    ['Alert/Info',    '#e7f5ff', t.blue7,   'Information',  'This is an informational alert.'],
+    ['Alert/Success', '#ebfbee', '#2b8a3e', 'Success',      'Changes saved successfully.'],
+    ['Alert/Warning', '#fff9db', '#e67700', 'Warning',      'Please review before continuing.'],
+    ['Alert/Error',   '#fff5f5', t.red6,    'Error',        'Something went wrong. Try again.'],
+  ];
+  for (const [name, bg, tc, title, msg] of alerts) {
+    const ab = makeRect(`${name}_bg`, MX, Y, 520, 60, bg, 6);
+    const bar= makeRect(`${name}_bar`, MX, Y, 4, 60, tc, 2);
+    const at = makeText(`${name}_title`, MX+20, Y+16, title, { size:13, weight:'600', color:tc });
+    const am = makeText(`${name}_msg`, MX+20, Y+36, msg, { size:12, color:tc });
+    makeComp([ab, bar, at, am]);
+    step(name);
+    Y += 76;
+    await tick();
+  }
+  Y += 8;
+
+  // ── NAVIGATION ────────────────────────────────────────────────────────────
+  makeRect('_sec_nav', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_nav_lbl', MX+16, Y+8, 'NAVIGATION', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const n_bg = makeRect('Nav/Topbar_bg', MX, Y, 800, 56, t.gray9, 6);
+  const n_lo = makeText('Nav/Topbar_logo', MX+20, Y+20, 'Logo', { size:16, weight:'700', color:t.white });
+  const n_bn = makeRect('Nav/Topbar_cta', MX+680, Y+14, 100, 28, t.blue5, t.r2);
+  const n_bt = makeText('Nav/Topbar_ctatx', MX+688, Y+21, 'Sign Up', { size:13, weight:'500', color:t.white });
+  makeComp([n_bg, n_lo, n_bn, n_bt]);
+  step('Nav/Topbar');
+  Y += 76;
+
+  const tab_bg = makeRect('Nav/Tabs_bg', MX, Y, 440, 44, t.gray1, 6);
+  const tab_shapes = [tab_bg];
+  for (let i = 0; i < 3; i++) {
+    const active = i === 1;
+    const tx2 = MX + 8 + i * 140;
+    if (active) tab_shapes.push(makeRect(`Nav/Tabs_active`, tx2, Y+4, 132, 36, t.white, t.r2));
+    tab_shapes.push(makeText(`Nav/Tabs_item${i}`, tx2+16, Y+15,
+      ['Overview','Analytics','Settings'][i],
+      { size:13, weight: active ? '600':'400', color: active ? t.gray9 : t.gray5 }));
+  }
+  makeComp(tab_shapes);
+  step('Nav/Tabs');
+
+  const bc_shapes = [];
+  const crumbs = ['Home','Products','Category','Item'];
+  let bcx = MX;
+  for (let i = 0; i < crumbs.length; i++) {
+    bc_shapes.push(makeText(`Nav/Breadcrumb_${i}`, bcx, Y+60,
+      crumbs[i], { size:13, weight: i===3?'500':'400', color: i===3 ? t.gray9 : t.gray5 }));
+    if (i < 3) {
+      bc_shapes.push(makeText(`Nav/Breadcrumb_sep${i}`, bcx + crumbs[i].length*7+4, Y+60,
+        '/', { size:13, color:t.gray3 }));
+    }
+    bcx += crumbs[i].length * 7 + 28;
+  }
+  makeComp(bc_shapes);
+  step('Nav/Breadcrumb');
+  Y += 100;
+  await tick();
+
+  // ── LAYOUT ────────────────────────────────────────────────────────────────
+  makeRect('_sec_layout', MX, Y, 1080, 32, t.gray1, 4);
+  makeText('_sec_layout_lbl', MX+16, Y+8, 'LAYOUT', { size:12, weight:'600', color:t.gray7 });
+  Y += 48;
+
+  const cont = penpot.createBoard();
+  cont.name = 'Layout/Container';
+  cont.x = MX; cont.y = Y; cont.width = 560; cont.height = 48;
+  cont.fills = [{ fillType:'solid', fillColor: t.blue0, fillOpacity:1 }];
+  const cont_tx = makeText('Layout/Container_tx', MX+16, Y+16, 'Container — max-width: 1200px', { size:12, color:t.blue7 });
+  makeComp([cont, cont_tx]);
+  step('Layout/Container');
+  Y += 72;
+
+  const hs = [];
+  let hx = MX;
+  for (let i = 0; i < 3; i++) {
+    const w = [120,160,100][i];
+    hs.push(makeRect(`Layout/HStack_item${i+1}`, hx, Y, w, 44, t.blue1, 4, { color:t.blue5, width:1 }));
+    hs.push(makeText(`Layout/HStack_tx${i+1}`, hx+8, Y+15, `item ${i+1}`, { size:11, color:t.blue7 }));
+    hx += w + 8;
+  }
+  makeComp(hs);
+  step('Layout/HStack');
+  Y += 64;
+
+  const vs = [];
+  for (let i = 0; i < 3; i++) {
+    vs.push(makeRect(`Layout/VStack_item${i+1}`, MX, Y + i*44, 200, 36, t.blue1, 4, { color:t.blue5, width:1 }));
+    vs.push(makeText(`Layout/VStack_tx${i+1}`, MX+8, Y+i*44+11, `item ${i+1}`, { size:11, color:t.blue7 }));
+  }
+  makeComp(vs);
+  step('Layout/VStack');
+  Y += 160;
+  await tick();
+
+  // fertig
+  setProgress(100, '✅ Fertig! Alle Komponenten erstellt.');
+  log('🎉 Alle Komponenten wurden erfolgreich angelegt!');
+  buildBtn.textContent = '✅ Fertig';
+}
+
+function tick() {
+  return new Promise(r => setTimeout(r, 10));
+}
+
+window.onload = () => {
+  buildBtn = document.getElementById('buildBtn');
+};
+</script>
+</body>
+</html>
