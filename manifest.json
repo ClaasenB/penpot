@@ -2,8 +2,7 @@
   "name": "OpenProps Component Library",
   "description": "Erstellt alle Standard-Komponenten basierend auf Open Props Tokens: Typography, Buttons, Inputs, Cards, Badges, Alerts, Navigation, Layout",
   "host": "https://claasenb.github.io/penpot",
-  "code": "openprops-plugin.js",
-  "ui": "openprops-plugin.html",
+  "code": "plugin.js",
   "icon": "https://open-props.style/favicon.svg",
   "permissions": [
     "content:read",

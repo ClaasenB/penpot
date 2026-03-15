@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OpenProps Library</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, sans-serif;
+  background: #1e2124;
+  color: #e0e0e0;
+  padding: 16px;
+}
+h1 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.subtitle { font-size: 11px; color: #868e96; margin-bottom: 16px; }
+.section {
+  margin-bottom: 8px;
+  border: 1px solid #2c2f33;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.section-header {
+  background: #2c2f33;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #adb5bd;
+  display: flex;
+  justify-content: space-between;
+}
+.section-header .count {
+  background: #3a3d42;
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 10px;
+  color: #868e96;
+}
+.section-body { padding: 8px 12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag {
+  background: #2c2f33;
+  border: 1px solid #3a3d42;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 10px;
+  color: #adb5bd;
+}
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #339af0;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 14px;
+}
+.btn:hover { background: #228be6; }
+.btn:disabled { background: #3a3d42; color: #868e96; cursor: not-allowed; }
+.progress { display: none; margin-top: 12px; }
+.progress.show { display: block; }
+.track { background: #2c2f33; border-radius: 4px; height: 4px; overflow: hidden; }
+.fill { height: 100%; background: #339af0; border-radius: 4px; transition: width 0.2s; width: 0%; }
+.plabel { font-size: 10px; color: #868e96; margin-top: 5px; text-align: center; }
+.log {
+  display: none; margin-top: 10px;
+  background: #161719; border-radius: 6px; padding: 8px;
+  font-size: 10px; font-family: monospace; color: #51cf66;
+  max-height: 100px; overflow-y: auto;
+}
+.log.show { display: block; }
+.err { color: #ff6b6b; }
+</style>
+</head>
+<body>
+<h1>🎨 OpenProps Library</h1>
+<p class="subtitle">Erstellt alle Komponenten in deiner Penpot-Datei</p>
+
+<div class="section">
+  <div class="section-header">Typography <span class="count">10</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Display</span><span class="tag">Heading 1–4</span>
+    <span class="tag">Body Large/Default/Small</span><span class="tag">Label</span><span class="tag">Caption</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Buttons <span class="count">8</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Primary</span><span class="tag">Secondary</span><span class="tag">Danger</span>
+    <span class="tag">Success</span><span class="tag">Ghost</span><span class="tag">Small</span>
+    <span class="tag">Large</span><span class="tag">Disabled</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Form Inputs <span class="count">9</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Default</span><span class="tag">Focus</span><span class="tag">Error</span>
+    <span class="tag">Success</span><span class="tag">Disabled</span><span class="tag">Textarea</span>
+    <span class="tag">Select</span><span class="tag">Checkbox ×2</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Cards <span class="count">2</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Basic</span><span class="tag">Stats</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Badges <span class="count">6</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Default</span><span class="tag">Primary</span><span class="tag">Success</span>
+    <span class="tag">Warning</span><span class="tag">Danger</span><span class="tag">New</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Alerts <span class="count">4</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Info</span><span class="tag">Success</span><span class="tag">Warning</span><span class="tag">Error</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Navigation <span class="count">3</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Topbar</span><span class="tag">Tabs</span><span class="tag">Breadcrumb</span>
+  </div></div>
+</div>
+<div class="section">
+  <div class="section-header">Layout <span class="count">3</span></div>
+  <div class="section-body"><div class="tags">
+    <span class="tag">Container</span><span class="tag">HStack</span><span class="tag">VStack</span>
+  </div></div>
+</div>
+
+<button class="btn" id="btn" onclick="start()">▶ Alle Komponenten erstellen</button>
+
+<div class="progress" id="progress">
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="plabel" id="plabel">Wird vorbereitet…</div>
+</div>
+<div class="log" id="log"></div>
+
+<script>
+const TOTAL = 45;
+let done = 0;
+
+function addLog(msg, isErr) {
+  const log = document.getElementById('log');
+  log.classList.add('show');
+  const line = document.createElement('div');
+  line.textContent = msg;
+  if (isErr) line.className = 'err';
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+function setProgress(pct, label) {
+  document.getElementById('fill').style.width = pct + '%';
+  document.getElementById('plabel').textContent = label;
+}
+
+function start() {
+  document.getElementById('btn').disabled = true;
+  document.getElementById('progress').classList.add('show');
+  done = 0;
+  // Nachricht an plugin.js senden
+  parent.postMessage({ type: 'build' }, '*');
+}
+
+// Nachrichten von plugin.js empfangen
+window.addEventListener('message', (e) => {
+  const msg = e.data;
+  if (msg.type === 'step') {
+    done++;
+    setProgress(Math.round(done / TOTAL * 100), msg.label);
+    addLog('✓ ' + msg.label);
+  } else if (msg.type === 'done') {
+    setProgress(100, '✅ Fertig! Alle Komponenten erstellt.');
+    addLog('🎉 Fertig!');
+    document.getElementById('btn').textContent = '✅ Fertig';
+  } else if (msg.type === 'error') {
+    addLog('❌ ' + msg.message, true);
+    document.getElementById('btn').disabled = false;
+  }
+});
+</script>
+</body>
+</html>
